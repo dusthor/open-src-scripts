@@ -45,7 +45,9 @@ local containerMap = {
     ["DiamondContainer"] = string.char(16) .. "DiamondContainer",
     ["EmeraldContainer"] = string.char(16) .. "EmeraldContainer",
     ["RubyContainer"] = string.char(13) .. "RubyContainer",
-    ["SapphireContainer"] = string.char(17) .. "SapphireContainer"
+    ["SapphireContainer"] = string.char(17) .. "SapphireContainer",
+    ["SpaceContainer"] = string.char(14) .. "SpaceContainer",
+    ["DeepSpaceContainer"] = string.char(18) .. "DeepSpaceContainer"
 }
 
 local containerOptions = {
@@ -70,7 +72,9 @@ local containerOptions = {
     "DiamondContainer",
     "EmeraldContainer",
     "RubyContainer",
-    "SapphireContainer"
+    "SapphireContainer",
+    "SpaceContainer",
+    "DeepSpaceContainer"
 }
 
 local flowerMap = {
