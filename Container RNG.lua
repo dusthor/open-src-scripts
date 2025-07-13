@@ -1,4 +1,3 @@
-
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Players = game:GetService("Players")
@@ -45,7 +44,9 @@ local containerMap = {
     ["DiamondContainer"] = string.char(16) .. "DiamondContainer",
     ["EmeraldContainer"] = string.char(16) .. "EmeraldContainer",
     ["RubyContainer"] = string.char(13) .. "RubyContainer",
-    ["SapphireContainer"] = string.char(17) .. "SapphireContainer"
+    ["SapphireContainer"] = string.char(17) .. "SapphireContainer",
+    ["SpaceContainer"] = string.char(14) .. "SpaceContainer",
+    ["DeepSpaceContainer"] = string.char(18) .. "DeepSpaceContainer"
 }
 
 local containerOptions = {
@@ -70,7 +71,9 @@ local containerOptions = {
     "DiamondContainer",
     "EmeraldContainer",
     "RubyContainer",
-    "SapphireContainer"
+    "SapphireContainer",
+    "SpaceContainer",
+    "DeepSpaceContainer"
 }
 
 local flowerMap = {
@@ -269,6 +272,8 @@ Container:CreateDropdown({
 })
 
 local buyDelay
+local maxContainers
+local minMoney
 
 Container:CreateToggle({
     Name = "Auto Buy Container",
@@ -282,11 +287,43 @@ Container:CreateToggle({
                 break
             end
 
-            remote:FireServer(buffer.fromstring("\26"), buffer.fromstring("\254\1\0\6" .. e))
+            local max = maxContainers or 8
+            local containers = #containerHolder:GetChildren()
+
+            local money = tonumber(plr:FindFirstChild("leaderstats") and plr.leaderstats:FindFirstChild("Money") and plr.leaderstats.Money.Value) or 0
+
+            if containers < max and (not minMoney or money >= minMoney) then
+                remote:FireServer(buffer.fromstring("\26"), buffer.fromstring("\254\1\0\6" .. e))
+            end
             
             task.wait(buyDelay or 0)
         end
     end,
+})
+
+Container:CreateSlider({
+    Name = "Max Containers",
+    Range = {1, 8},
+    Increment = 1,
+    CurrentValue = 8,
+    Callback = function(Value)
+        maxContainers = Value
+    end,
+})
+
+Container:CreateInput({
+   Name = "Min Money",
+   CurrentValue = "0",
+   PlaceholderText = "$",
+   RemoveTextAfterFocusLost = false,
+   Callback = function(Text)
+        local value = tonumber(Text)
+        if value then
+            minMoney = value
+        else
+            warn("Invalid money input")
+        end
+   end,
 })
 
 Container:CreateSlider({
