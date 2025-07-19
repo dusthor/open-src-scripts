@@ -47,7 +47,7 @@ local containerMap = {
     ["SapphireContainer"] = string.char(17) .. "SapphireContainer",
     ["SpaceContainer"] = string.char(14) .. "SpaceContainer",
     ["DeepSpaceContainer"] = string.char(18) .. "DeepSpaceContainer",
-    ["VortexContainer"] = string.char(18) .. "VortexContainer"
+    ["VortexContainer"] = string.char(15) .. "VortexContainer"
 }
 
 local containerOptions = {
