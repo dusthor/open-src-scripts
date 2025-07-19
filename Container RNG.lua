@@ -46,7 +46,8 @@ local containerMap = {
     ["RubyContainer"] = string.char(13) .. "RubyContainer",
     ["SapphireContainer"] = string.char(17) .. "SapphireContainer",
     ["SpaceContainer"] = string.char(14) .. "SpaceContainer",
-    ["DeepSpaceContainer"] = string.char(18) .. "DeepSpaceContainer"
+    ["DeepSpaceContainer"] = string.char(18) .. "DeepSpaceContainer",
+    ["VortexContainer"] = string.char(18) .. "VortexContainer"
 }
 
 local containerOptions = {
@@ -73,7 +74,8 @@ local containerOptions = {
     "RubyContainer",
     "SapphireContainer",
     "SpaceContainer",
-    "DeepSpaceContainer"
+    "DeepSpaceContainer",
+    "VortexContainer"
 }
 
 local flowerMap = {
